@@ -29,7 +29,7 @@ class RegisterPages
                 $page->getTitle(),
             ])->filter()->join(' / ');
 
-            $url = $page::getUrl();
+            $url = $page::getUrl(panel: $panel->getId());
 
             if (blank($name) || blank($url)) {
                 continue;
