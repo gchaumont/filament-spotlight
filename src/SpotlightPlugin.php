@@ -8,6 +8,7 @@ use Filament\Facades\Filament;
 use Filament\Panel;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
+use pxlrbt\FilamentSpotlight\Actions\RegisterPanels;
 use pxlrbt\FilamentSpotlight\Actions\RegisterPages;
 use pxlrbt\FilamentSpotlight\Actions\RegisterResources;
 use pxlrbt\FilamentSpotlight\Actions\RegisterUserMenu;
@@ -52,6 +53,7 @@ class SpotlightPlugin implements Plugin
 
     public static function registerNavigation($panel)
     {
+        RegisterPanels::boot($panel);
         RegisterPages::boot($panel);
         RegisterResources::boot($panel);
         RegisterUserMenu::boot($panel);
