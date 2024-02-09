@@ -33,7 +33,7 @@ class RegisterPanels
             }
 
             $command = new PageCommand(
-                name: $panelInstance->getLabel(),
+                name: $panelInstance->getBrandName() ?? ucfirst($panelInstance->getId()),
                 url: $url
             );
 
