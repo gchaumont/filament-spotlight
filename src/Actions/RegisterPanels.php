@@ -6,6 +6,7 @@ use Filament\Pages\Page;
 use Filament\Panel;
 use LivewireUI\Spotlight\Spotlight;
 use pxlrbt\FilamentSpotlight\Commands\PageCommand;
+use Illuminate\Support\Str;
 
 class RegisterPanels
 {
@@ -34,7 +35,7 @@ class RegisterPanels
 
             $command = new PageCommand(
                 name: $panelInstance->getBrandName() ?? ucfirst($panelInstance->getId()),
-                url: $panelInstance->getHomeUrl() ?? $panelInstance->getPath()
+                url: $panelInstance->getHomeUrl() ?? Str::start($panelInstance->getPath(), '/'),
             );
 
             Spotlight::$commands[$command->getId()] = $command;
