@@ -28,9 +28,9 @@ class RegisterPanels
             // $url = $panelInstance->getHomeUrl() ?? $panelInstance->getUrl(); 
             // app('filament')->setCurrentPanel($currentPanel);
 
-            if (blank($url)) {
-                continue;
-            }
+            //if (blank($url)) {
+            //    continue;
+            //}
 
             $command = new PageCommand(
                 name: $panelInstance->getBrandName() ?? ucfirst($panelInstance->getId()),
