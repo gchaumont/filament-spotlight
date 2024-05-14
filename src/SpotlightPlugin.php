@@ -37,25 +37,24 @@ class SpotlightPlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        Filament::serving(function () use ($panel) {
-            config()->set('livewire-ui-spotlight.include_js', false);
-            if (Filament::hasTenancy()) {
-                Event::listen(TenantSet::class, function () use ($panel) {
-                    self::registerNavigation($panel);
-                });
-            } else {
-                self::registerNavigation($panel);
-            }
-
-        });
+       // Filament::serving(function () use ($panel) {
+       //     config()->set('livewire-ui-spotlight.include_js', false);
+       //     if (Filament::hasTenancy()) {
+       //         Event::listen(TenantSet::class, function () use ($panel) {
+       //             self::registerNavigation($panel);
+       //         });
+       //     } else {
+       //         self::registerNavigation($panel);
+       //     }
+       // });
 
     }
 
-    public static function registerNavigation($panel)
-    {
-        RegisterPanels::boot($panel);
-        RegisterPages::boot($panel);
-        RegisterResources::boot($panel);
-        RegisterUserMenu::boot($panel);
-    }
+    //public static function registerNavigation($panel)
+    // {
+    //    RegisterPanels::boot($panel);
+    //    RegisterPages::boot($panel);
+    //    RegisterResources::boot($panel);
+    //    RegisterUserMenu::boot($panel);
+    // }
 }
