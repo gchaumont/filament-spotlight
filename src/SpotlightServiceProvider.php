@@ -26,7 +26,8 @@ class SpotlightServiceProvider extends ServiceProvider
         ], package: 'pxlrbt/filament-spotlight');
 
 
-         Filament::serving(function () use ($panel) {
+         Filament::serving(function () {
+            $panel = filament()->getCurrentPanel();
            config()->set('livewire-ui-spotlight.include_js', false);
             if (Filament::hasTenancy()) {
                 Event::listen(TenantSet::class, function () use ($panel) {
