@@ -12,6 +12,7 @@ use pxlrbt\FilamentSpotlight\Actions\RegisterPanels;
 use pxlrbt\FilamentSpotlight\Actions\RegisterPages;
 use pxlrbt\FilamentSpotlight\Actions\RegisterResources;
 use pxlrbt\FilamentSpotlight\Actions\RegisterUserMenu;
+use LivewireUI\Spotlight\Spotlight;
 
 
 class SpotlightServiceProvider extends ServiceProvider
@@ -27,7 +28,10 @@ class SpotlightServiceProvider extends ServiceProvider
 
 
          Filament::serving(function () {
-            $panel = filament()->getCurrentPanel();
+           Spotlight::$commands = [];
+             
+           $panel = filament()->getCurrentPanel();
+             
            config()->set('livewire-ui-spotlight.include_js', false);
             if (Filament::hasTenancy()) {
                 Event::listen(TenantSet::class, function () use ($panel) {
