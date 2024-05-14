@@ -15,7 +15,7 @@ class RegisterPanels
 
         foreach ($panels as $panelInstance) {
 
-            if ($panelInstance->getId() == $panel->getId()) {
+            if ($panelInstance == $panel) {
                 continue;
             }
 
@@ -23,10 +23,10 @@ class RegisterPanels
                 continue;
             }
             
-            $currentPanel = app('filament')->getCurrentPanel();
-            app('filament')->setCurrentPanel($panelInstance);
-            $url = $panelInstance->getHomeUrl() ?? $panelInstance->getUrl();
-            app('filament')->setCurrentPanel($currentPanel);
+            // $currentPanel = fila->getCurrentPanel();
+            // app('filament')->setCurrentPanel($panelInstance);
+            // $url = $panelInstance->getHomeUrl() ?? $panelInstance->getUrl(); 
+            // app('filament')->setCurrentPanel($currentPanel);
 
             if (blank($url)) {
                 continue;
@@ -34,7 +34,7 @@ class RegisterPanels
 
             $command = new PageCommand(
                 name: $panelInstance->getBrandName() ?? ucfirst($panelInstance->getId()),
-                url: $url
+                url: $panelInstance->getHomeUrl() ?? $panelInstance->getPath()
             );
 
             Spotlight::$commands[$command->getId()] = $command;
