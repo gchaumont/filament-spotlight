@@ -35,8 +35,8 @@ class ResourceCommand extends SpotlightCommand
         string $page,
         protected string $key,
     ) {
-        $this->resource = new $resource();
-        $this->page = new $page();
+        $this->resource = app($resource);
+        $this->page = app($page);
     }
 
     public function getId(): string
